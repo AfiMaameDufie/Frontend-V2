@@ -1,0 +1,47 @@
+.stepper-wrapper-vertical {
+  margin-top: 1rem;
+  .step-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .step-number {
+    border-radius: 7px;
+    width: 25px;
+    height: 25px;
+    padding: 4.5px 4px 4px;
+    text-align: center;
+    font-size: 95%;
+    box-shadow: 0 0 3px rgb(165, 165, 165);
+  }
+
+  .step-description {
+    margin-left: 2.2rem;
+    padding-bottom: 3px;
+  }
+
+  .divider-line {
+    height: 37px;
+    width: 1px;
+    background-color: #c2c2c2;
+    position: absolute;
+    top: 100%;
+    left: 6.4%;
+  }
+}
+
+.step-number-selected {
+  // background: purple;
+  border: 1px solid #4b4b4b;
+  color: #fff;
+}
+
+.step-number-disabled {
+  border: 1px solid #bebebe;
+}
+
+.step-description-active {
+  font-weight: bold;
+}
