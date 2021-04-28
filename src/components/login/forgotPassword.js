@@ -11,6 +11,8 @@ import { Modal } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import icon from "../images/favicon.jpeg";
+import axios from "axios";
+import { Alert } from 'reactstrap';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -19,6 +21,8 @@ class ForgotPassword extends Component {
     this.state = {
       email: "",
       loader: () => <></>,
+      message: "",
+      visible: false
     };
   }
 
@@ -46,17 +50,21 @@ class ForgotPassword extends Component {
 
   onSubmitHandler = (e) => {
     e.preventDefault();
-    const { email} = this.state;
-    this.props.dispatch(loginUser(email));
+    const { email } = this.state;
+    axios.post("https://turntablexebackend.herokuapp.com/api/turntablexe/resetPassword", {email}).
+        then(res=>this.setState({message: res.data, visible: true})).catch(e => console.log(e));
+//    this.props.dispatch(loginUser(email));
   };
 
   render() {
-    const { email } = this.state;
+    const { email, message, visible } = this.state;
     if (this.props.login_stat || localStorage.getItem("id") != null) {
       return <Redirect to="/apply" />;
     } else {
       return (
         <div className="limiter">
+//         <Alert color="success" visible={visible}>{message}
+//         </Alert>
           <Helmet>
             <title>Recover Password </title>
             <meta name="image" content={icon}/>
@@ -106,7 +114,7 @@ class ForgotPassword extends Component {
                 <div className="text-center p-t-90">
               <Link to="/">
                 <a className="txt1 mr-3" href="#">
-                  Allready have an account?
+                  Already have an account?
                 </a>
               </Link>
               <a className= "txt1 mr-3" target="_blank" href="https://accounts.google.com/ServiceLogin?service=mail&continue=https://mail.google.com/mail/&hl=en" target="_blank" rel="noopener noreferrer">Click to Open Gmail</a>
