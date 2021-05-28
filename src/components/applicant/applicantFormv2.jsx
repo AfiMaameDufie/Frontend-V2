@@ -15,6 +15,7 @@ import { UniversityNames } from "./schoolData";
 import "antd/dist/antd.css";
 import { Helmet } from "react-helmet";
 
+
 // First component
 class FirstStep extends Component {
   constructor(props) {
@@ -154,8 +155,38 @@ class FirstStep extends Component {
                 <option>Others</option>
               </Input>
             </FormGroup>
+
+            <Row>
+          <Col xs={4} md={4} className="">
+      
+        
           </Col>
+          
+          <Col xs={4} md={4} className="">
+      
+        
+        </Col>
+
+        <Col xs={4} md={4} className="">
+          
+        <button type="button" class="btn btn-primary text-left">Save and continue later</button>
+        
+        </Col>
+          </Row>
+
+           
+          </Col>
+
+        
+
+          
+
         </Row>
+
+
+       
+
+
       </Container>
     );
   }
@@ -321,6 +352,24 @@ class SecondStep extends React.Component {
                 enableAreaCodeStretch
               />
             </FormGroup>
+            <Row>
+          <Col xs={4} md={4} className="">
+      
+        
+          </Col>
+          
+          <Col xs={4} md={4} className="">
+      
+        
+        </Col>
+
+        <Col xs={4} md={4} className="">
+          
+        <button type="button" class="btn btn-primary text-left">Save and continue later</button>
+        
+        </Col>
+          </Row>
+           
           </Col>
         </Row>
       </Container>
@@ -469,7 +518,26 @@ class ThirdStep extends React.Component {
               </Label>
             </FormGroup>
             {this.state.ssnit_status()}
+
+            <Row>
+          <Col xs={4} md={4} className="">
+      
+        
           </Col>
+          
+          <Col xs={4} md={4} className="">
+      
+        
+        </Col>
+
+        <Col xs={4} md={4} className="">
+          
+        <button type="button" class="btn btn-primary text-left">Save and continue later</button>
+        
+        </Col>
+          </Row>
+          </Col>
+
         </Row>
       </Container>
     );
@@ -509,6 +577,23 @@ class FourthStep extends React.Component {
                 onChange={this.onChangeHandler}
               />
             </FormGroup>
+            <Row>
+          <Col xs={4} md={4} className="">
+      
+        
+          </Col>
+          
+          <Col xs={4} md={4} className="">
+      
+        
+        </Col>
+
+        <Col xs={4} md={4} className="">
+          
+        <button type="button" class="btn btn-primary text-left">Save and continue later</button>
+        
+        </Col>
+          </Row>
           </Col>
 
           <Col xs={12} md={6} className="mr-auto ml-auto">
@@ -518,6 +603,8 @@ class FourthStep extends React.Component {
               style={{ width: "100%" }}
             />
           </Col>
+          
+        
         </Row>
       </Container>
     );
@@ -659,3 +746,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Applicant);
+
