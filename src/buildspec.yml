@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+    # install node 14 
+    -cinst nodejs.install
+     # install Yarn
+    -npm install -g yarn   
+
+   pre_build:
+     commands:
+      #install dependencies 
+      -yarn
+  
+  build:
+     commands:
+      #tests
+      -yarn test
+      #build
+      -yarn build
+  
+  artifacts:
+    files:
+      -"**/*"
+    discard-paths: no
+    base-directory: dist
+
+
+
+
