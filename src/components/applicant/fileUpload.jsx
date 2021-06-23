@@ -8,6 +8,15 @@ const FileUpload = (props) => {
   const prop = {
     name: "file",
     action: `${BASE_URL}${props.id}`,
+       
+    beforeUpload: file => {
+      if (['application/pdf'].includes(file.type)) {
+        return true;
+      } else {
+        message.error(`${file.name} is not a png file`);
+        return Upload.LIST_IGNORE;
+      }
+    },
     onChange(info) {
       if (info.file.status !== "uploading") {
         console.log(info.file, info.fileList);
@@ -23,9 +32,13 @@ const FileUpload = (props) => {
   };
 
   return (
-    <Upload {...prop} method="POST">
-      <Button icon={<UploadOutlined />}>Click to Upload</Button>
+    <Upload {...prop} method="POST" >
+      {  <Button icon={<UploadOutlined />}> Click to Upload </Button> } 
     </Upload>
+
+    // <form action="upload" {...prop} method="POST">
+    //   <input type="file" accept=".pdf" />
+    // </form>
   );
 };
 
