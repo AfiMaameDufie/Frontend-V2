@@ -2,7 +2,7 @@
   "name": "rec_turn_tracker",
   "version": "0.1.0",
   "private": true,
-  "start": "PORT=3600 react-scripts start",
+  "start": "PORT=3006 react-scripts start",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
