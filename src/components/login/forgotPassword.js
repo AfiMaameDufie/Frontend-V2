@@ -52,20 +52,20 @@ class ForgotPassword extends Component {
     e.preventDefault();
     const { email } = this.state;
     axios.post("https://turntablexebackend.herokuapp.com/api/turntablexe/resetPassword", {email}).
-        then(res=>this.setState({message: res.data, visible: true})).catch(e => console.log(e));
+        then(res=>this.setState({message: res.data, visible: false})).catch(e => console.log(e));
 //    this.props.dispatch(loginUser(email));
   };
 
   render() {
-    const { email, message, visible } = this.state;
+    const { email, message, visible, alert } = this.state;
     if (this.props.login_stat || localStorage.getItem("id") != null) {
       return <Redirect to="/apply" />;
     } else {
       return (
         <div className="limiter">
-//         <Alert color="success" visible={visible}>{message}
-//         </Alert>
-          <Helmet>
+          <Alert color="success" visible={visible}>{message}
+          </Alert>
+        <Helmet>
             <title>Recover Password </title>
             <meta name="image" content={icon}/>
         </Helmet>

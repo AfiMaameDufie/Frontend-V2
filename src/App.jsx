@@ -21,7 +21,7 @@ class App extends React.Component {
     )
 
   }
-}
+} 
 
 const mapStateToProps = state => ({
   uId: state.Login.id,

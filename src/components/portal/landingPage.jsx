@@ -9,8 +9,12 @@ import { Redirect, Link } from "react-router-dom";
 import Header from "./header";
 import { Helmet } from "react-helmet";
 import icon from "../images/favicon.jpeg";
+import { toggleStatus } from "../../service/actions/actions";
+
 
 class LandingPage extends Component {
+
+
   componentDidMount() {
     Aos.init({ duration: 2000 });
   }
@@ -19,7 +23,13 @@ class LandingPage extends Component {
     return <Redirect to="/togle" />;
   };
   state = {};
+
+
+
   render() {
+
+    toggleStatus()
+
     if (localStorage.getItem("id") === null) {
       return <Redirect to="/" />;
     } else {
@@ -35,9 +45,11 @@ class LandingPage extends Component {
               <p data-aos="fade-right">
                 You can click on the apply button to apply for a job
               </p>
-              <Link to="/form">
-                <button className="hero-button"> Apply now</button>
-              </Link>
+              {true ? <Link to="/form">
+
+                {localStorage.getItem("status") === "true" ? <button className="hero-button">Apply now</button> : <> </>}
+              </Link> : <></>}
+              
             </div>
 
             <div
