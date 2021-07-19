@@ -15,9 +15,9 @@ import {
 import axios from "axios";
 import { message } from "antd";
 
-// const BASE_URL = "http://localhost:8080/api/turntablexe/";
+const BASE_URL = "http://localhost:8080/api/turntablexe/";
 
-const BASE_URL = "https://turntablexebackend.herokuapp.com/api/turntablexe/";
+// const BASE_URL = "https://turntablexebackend.herokuapp.com/api/turntablexe/";
 
 const email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -138,6 +138,28 @@ export const register = (email, password, confirmPassword) => (dispatch) => {
     });
 };
 
+const sendEmail = ( applicantId )=>{
+  return (dispatch) => {
+    axios.get(`/applicants/SuccessfulApplication/${applicantId}`)
+    .then(res=>{
+      if (res.data === "Successful Email Sent") {
+        message.info("Email sent");
+      }
+    })
+  }
+}
+
+
+export const toggleStatus = () => {axios.get(`${BASE_URL}/getToggleStatus`)
+  .then(res => {console.log(res.data) 
+    const status = res.data[0].data
+    localStorage.setItem("status", status)
+    console.log(status)
+  } )
+  .catch((e) => e)
+}
+
+
 export const submitApplicantData = (
   id,
   first_name,
@@ -188,6 +210,7 @@ export const submitApplicantData = (
       if (res.data === "User data saved") {
         message.info("User data saved");
         dispatch(apply_end());
+        sendEmail(id)
       } else {
         message.info("Sorry your profile is deleted");
         dispatch(apply_end());
